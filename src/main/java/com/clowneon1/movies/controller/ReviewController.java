@@ -12,12 +12,13 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/reviews")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class ReviewController {
 
     private final ReviewService reviewService;
 
     @PostMapping
     public ResponseEntity<Review> createReview(@RequestBody Map<String,String> payload){
-        return new ResponseEntity<>(reviewService.createReview(payload.get("reviewBody"),payload.get("imdbId")), HttpStatus.CREATED);
+        return new ResponseEntity<>(reviewService.createReview(payload.get("reviewBody"),payload.get("imdbId")), HttpStatus.OK);
     }
 }
